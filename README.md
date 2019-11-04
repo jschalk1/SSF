@@ -1,4 +1,4 @@
-# SSF
+# Sports Schedule Finder
 
 # CS321 Group Project
 
