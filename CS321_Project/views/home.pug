@@ -1,0 +1,68 @@
+extends layout
+
+block content
+    .w3-col.m3 &nbsp;
+    .w3-col.m6
+        .w3-panel.sidebar.w3-round-xlarge
+            .w3-block.w3-panel.contains.w3-leftbar.w3-rightbar.w3-border-dark-gray.w3-round-large
+                h2.w3-center Find a League
+
+        .w3-panel.sidebar.w3-round-xlarge
+            
+            //- Highschool
+            .w3-button.w3-panel.w3-block.contains.w3-left-align.w3-hover-gray.w3-leftbar.w3-border-dark-gray.league.w3-round-large(onclick="openL('highschool')")
+                h3 Highschool
+            .w3-hide.w3-panel.w3-gray.w3-leftbar.w3-border-green.w3-round-large(id="highschool", style="margin-left:16px")
+                h3 City
+                input.w3-block.searchbar(type="text", placeholder="Enter a city", id="textH")
+                a.w3-button.w3-right.w3-panel.w3-light-gray.w3-round-large(href="highschools" id="submitH" onclick="") Submit
+
+            //- College
+            .w3-button.w3-panel.w3-block.contains.w3-left-align.w3-hover-gray.w3-leftbar.w3-border-dark-gray.league.w3-round-large(onclick="openL('college')")
+                h3 College
+            .w3-hide.w3-panel.w3-gray.w3-leftbar.w3-border-green.w3-round-large(id="college", style="margin-left:16px")
+                h3 City
+                input.w3-block.searchbar(type="text", placeholder="Enter a city")
+                a.w3-button.w3-right.w3-panel.w3-light-gray.w3-round-large(href="highschools" id="submitH" onclick="") Submit
+
+            //- Semipro
+            .w3-button.w3-panel.w3-block.contains.w3-left-align.w3-hover-gray.w3-leftbar.w3-border-dark-gray.league.w3-round-large(onclick="openL('semipro')")
+                h3 Semi-Pro
+            .w3-hide.w3-panel.w3-gray.w3-leftbar.w3-border-green.w3-round-large(id="semipro", style="margin-left:16px")
+                h3 City
+                input.w3-block.w3-searchbar(type="text", placeholder="Enter a city")
+                a.w3-button.w3-right.w3-panel.w3-light-gray.w3-round-large(href="highschools" id="submitH" onclick="") Submit
+            
+            //- Minors
+            .w3-button.w3-panel.w3-block.contains.w3-left-align.w3-hover-gray.w3-leftbar.w3-border-dark-gray.league.w3-round-large(onclick="openL('minors')")
+                h3 Minors
+            .w3-hide.w3-panel.w3-gray.w3-leftbar.w3-border-green.w3-round-large(id="minors", style="margin-left:16px")
+                h3 City
+                input.w3-block.searchbar(type="text" placeholder="Enter a city")
+                a.w3-button.w3-right.w3-panel.w3-light-gray.w3-round-large(href="highschools" id="submitH" onclick="") Submit
+    .w3-col.m3 &nbsp;
+
+    script.
+        //- function responsible for showing accordion popup when one of the 4 leagues are clicked
+        function openL(id) {
+
+            var x = document.getElementById(id);
+
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+                x.previousElementSibling.className = 
+                x.previousElementSibling.className.replace("w3-border-dark-gray", "w3-border-green");
+                x.previousElementSibling.className = 
+                x.previousElementSibling.className.replace("contains", "w3-gray");
+            } else { 
+                x.className = x.className.replace(" w3-show", "");
+                x.previousElementSibling.className = 
+                x.previousElementSibling.className.replace("w3-border-green", "w3-border-dark-gray");
+                x.previousElementSibling.className = 
+                x.previousElementSibling.className.replace("w3-gray", "contains");
+            }
+        }
+
+        function sendCity(cityText) {
+            
+        }

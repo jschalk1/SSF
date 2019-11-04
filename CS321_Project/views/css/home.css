@@ -1,0 +1,25 @@
+h1, h2, h3, h4, h5, h6 { 
+    font-family: sans-serif; 
+    color: #dad;
+}
+.background{
+    color:#fff !important; background-color:#292929 !important
+}
+.navbar{
+    color:#fff !important; background-color:#080808 !important
+}
+.sidebar{
+    color:#fff !important; background-color:#1c1c1c !important
+}
+.card{
+    color:#fff !important; background-color:#353535 !important
+}
+.default{
+    color:#fff !important; background-color:#4a4f4e !important
+}
+.contains{
+    color:#fff !important; background-color:#767676 !important
+}
+.smallMarg{
+    margin-top:2px; margin-bottom:2px;
+}

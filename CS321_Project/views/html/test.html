@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html></html>
+<title>Schedule </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  h1, h2, h3, h4, h5, h6 { font-family: sans-serif; }
+  .background{color:#fff !important; background-color:#292929 !important}
+  .navbar{color:#fff !important; background-color:#080808 !important}
+  .sidebar{color:#fff !important; background-color:#1c1c1c !important}
+  .card{color:#fff !important; background-color:#353535 !important}
+  .default{color:#fff !important; background-color:#4a4f4e !important}
+  .contains{color:#fff !important; background-color:#767676 !important}
+  .smallMarg{margin-top:2px; margin-bottom:2px;}
+</style>
+<body>
+  <div class="w3-container">
+    <h2>Accordion Buttons</h2>
+    <div class="w3-button w3-red" onclick="myFunction('Demo1')">Normal Button</div>
+    <div class="w3-hide w3-container w3-blue" id="Demo1">
+      <p>words</p>
+    </div>
+    <div class="w3-button w3-purple w3-block" onclick="myFunction('Demo2')">Long Button</div>
+    <div class="w3-hide w3-container w3-green" id="Demo2">
+      <p>phrases</p>
+    </div>
+  </div>
+</body>
+<script>
+  function myFunction(id) {
+      var x = document.getElementById(id);
+      if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+      } else { 
+          x.className = x.className.replace(" w3-show", "");
+      }
+  }
+</script>

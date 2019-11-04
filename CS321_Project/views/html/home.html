@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html></html>
+<title>Schedule </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  h1, h2, h3, h4, h5, h6 { font-family: sans-serif; }
+  .background{color:#fff !important; background-color:#292929 !important}
+  .navbar{color:#fff !important; background-color:#080808 !important}
+  .sidebar{color:#fff !important; background-color:#1c1c1c !important}
+  .card{color:#fff !important; background-color:#353535 !important}
+  .default{color:#fff !important; background-color:#4a4f4e !important}
+  .contains{color:#fff !important; background-color:#767676 !important}
+  .smallMarg{margin-top:2px; margin-bottom:2px;}
+</style>
+<body class="background">
+  <div class="w3-bar navbar"><a class="w3-bar-item" href="home" style="text-decoration:none"> 
+      <h3 style="margin-bottom:-1px; margin-top:3px" id="domain">Schedule Finder</h3></a>
+    <button class="w3-bar-item w3-button w3-theme-1 w3-xlarge w3-padding-large w3-right"><i class="fa fa-search"></i></button>
+    <div class="w3-bar-item w3-right" id="searchbar" style="width:35%">
+      <input class="w3-input w3-round-xlarge w3-border searchbar" type="text" id="location" placeholder="Search">
+    </div>
+  </div>
+  <div class="w3-col m3">&nbsp;</div>
+  <div class="w3-col m6">
+    <div class="w3-panel sidebar w3-round-xlarge">
+      <div class="w3-block w3-panel contains w3-leftbar w3-rightbar w3-border-dark-gray w3-round-large">
+        <h2 class="w3-center">Leagues</h2>
+      </div>
+    </div>
+    <div class="w3-panel sidebar w3-round-xlarge">
+      <div class="w3-button w3-panel w3-block contains w3-left-align w3-hover-gray w3-leftbar w3-border-dark-gray league w3-round-large" onclick="openL('highschool')">
+        <h3>Highschool</h3>
+      </div>
+      <div class="w3-hide w3-panel w3-gray w3-leftbar w3-border-green w3-round-large" id="highschool" style="margin-left:16px">
+        <h3>City</h3>
+        <input class="w3-block searchbar" type="text" placeholder="Enter a city">
+        <div class="w3-button w3-right w3-panel w3-light-gray w3-round-large">Submit</div>
+      </div>
+      <div class="w3-button w3-panel w3-block contains w3-left-align w3-hover-gray w3-leftbar w3-border-dark-gray league w3-round-large" onclick="openL('college')">
+        <h3>College</h3>
+      </div>
+      <div class="w3-hide w3-panel w3-gray w3-leftbar w3-border-green w3-round-large" id="college" style="margin-left:16px">
+        <h3>City</h3>
+        <input class="w3-block searchbar" type="text" placeholder="Enter a city">
+        <div class="w3-button w3-right w3-panel w3-light-gray w3-round-large">Submit</div>
+      </div>
+      <div class="w3-button w3-panel w3-block contains w3-left-align w3-hover-gray w3-leftbar w3-border-dark-gray league w3-round-large" onclick="openL('semipro')">
+        <h3>Semi-Pro</h3>
+      </div>
+      <div class="w3-hide w3-panel w3-gray w3-leftbar w3-border-green w3-round-large" id="semipro" style="margin-left:16px">
+        <h3>City</h3>
+        <input class="w3-block w3-searchbar" type="text" placeholder="Enter a city">
+        <div class="w3-button w3-right w3-panel w3-light-gray w3-round-large">Submit</div>
+      </div>
+      <div class="w3-button w3-panel w3-block contains w3-left-align w3-hover-gray w3-leftbar w3-border-dark-gray league w3-round-large" onclick="openL('minors')">
+        <h3>Minors</h3>
+      </div>
+      <div class="w3-hide w3-panel w3-gray w3-leftbar w3-border-green w3-round-large" id="minors" style="margin-left:16px">
+        <h3>City</h3>
+        <input class="w3-block searchbar" type="text" placeholder="Enter a city">
+        <div class="w3-button w3-right w3-panel w3-light-gray w3-round-large">Submit</div>
+      </div>
+    </div>
+  </div>
+  <div class="w3-col m3">&nbsp;</div>
+  <script>
+    function activatePlacesSearch() {
+        
+        var searchbars = document.getElementsByClassName('searchbar');
+    
+        for (var i = 0; i < searchbars.length; i++) {
+            var input = searchbars[i];
+            var autocomplete = new google.maps.places.Autocomplete(input);
+        }
+    }
+  </script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV5rHOd4fKM_XXCcbplwmHJ2ObQQ7kIyo&amp;libraries=places&amp;callback=activatePlacesSearch"></script>
+</body>
+<script>
+  function openL(id) {
+  
+      var x = document.getElementById(id);
+  
+      if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+          x.previousElementSibling.className = 
+          x.previousElementSibling.className.replace("w3-border-dark-gray", "w3-border-green");
+          x.previousElementSibling.className = 
+          x.previousElementSibling.className.replace("contains", "w3-gray");
+      } else { 
+          x.className = x.className.replace(" w3-show", "");
+          x.previousElementSibling.className = 
+          x.previousElementSibling.className.replace("w3-border-green", "w3-border-dark-gray");
+          x.previousElementSibling.className = 
+          x.previousElementSibling.className.replace("w3-gray", "contains");
+      }
+  }
+  
+  window.addEventListener("resize", myFunction);
+  
+  function myFunction() {
+      if (window.innerWidth < 675) {
+          document.getElementById("searchbar").style.width = "60%";
+          document.getElementById("domain").style.display = "none";
+      } 
+      else {
+          document.getElementById("searchbar").style.width = "35%";
+          document.getElementById("domain").style.display = "block";
+      }
+  }
+</script>
