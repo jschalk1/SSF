@@ -1,0 +1,110 @@
+Relational Database Web Development
+***********************************
+
+Relational Database User Interface
+client/server IIS for windows
+
+Mongo- we will use maria 
+*Express- Framework, high level
+Angular- front end, client side
+*Node- Platform, low level, server side
+
+MVC-model view controller
+PaaS- provider as a service, Heroku is a free example that allows us to put our work online
+HTTP- hyper text transfer protocol
+
+client------request------>server<------->database engine
+      <-----response------server
+
+request- req
+response- response
+
+Pug- Template engine  
+CSS- cascading style sheets
+     W3.CSS - CSS Framework
+
+npm- node package manager
+
+jQuery- javascript library
+
+npm init -y     //creates package.json file. do this after creating app.json
+npm i express   //creates node modules folder from express
+npm i path      //installs path
+npm i morgan    // logs requests, middleware
+npm i pug       // installs pug Template
+npm i nodemon -g // node monitoring
+npm i           // installs all dependencies from packages file
+
+
+if sharing this hello world app, delete the node_modules folder and the recipient can simply use the "npm i" command to attain those contents
+
+route- when making a request it becomes our responsibilty to handle to routing. we direct to which code is to be executed for specific actions
+
+middleware- the content between the request and the response. a queue of functionality that allows us to choose what we want to be processed before
+            we make a response
+
+public folder - contains STATIC html and css files
+
+pug files - template of html
+
+node app.js // starts the server
+
+APP SKELETON
+-----------------------------------------------------------------------
+STEPS
+-------------------------
+
+Static Content
+
+1. create public folder
+    a. create css folder 
+    b. create html folder
+
+--------------------------
+
+2. create views folder
+    a. create layout.pug file
+    b. create other *.pug files(s) 
+
+3. create app.js file
+
+4. Go to terminal to initialize package.json and install dependencies
+    a. > npm init -y            // package.json
+    b. > npm i express          // app
+    c. > npm i morgan           // logger
+    d. > npm i path             // path builder
+    e. > npm i pug              // html template
+    f. > npm i mysql            // if using mysql DB
+
+5. begin work on layout.pug html template superclass
+
+
+6. begin work on *.pug subclasses
+
+7. begin work on app.js
+
+layout.pug template
+------------------------------------------------------------
+doctype html
+html
+    head
+        title= title
+        meta()
+        link()
+    body
+        block content
+        footer
+---------------------------------------------------------------
+pading- internal
+margin- external
+
+// pug means its a pug command
+// -w means watch for changes
+// ./views means watch all the pug files in the views folder
+// -o means output
+// ./views/html means the output html files should go to /views/html
+// -P means output the html as pretty print so its readable
+>pug -w ./views -o ./views/html -P
+
+
+API key: AIzaSyBV5rHOd4fKM_XXCcbplwmHJ2ObQQ7kIyo
