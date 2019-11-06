@@ -15,31 +15,31 @@ block content
             .w3-hide.w3-panel.w3-gray.w3-leftbar.w3-border-green.w3-round-large(id="highschool", style="margin-left:16px")
                 h3 City
                 input.w3-block.searchbar(type="text", placeholder="Enter a city", id="textH")
-                a.w3-button.w3-right.w3-panel.w3-light-gray.w3-round-large(href="highschools" id="submitH" onclick="") Submit
+                button.w3-button.w3-right.w3-panel.w3-light-gray.w3-round-large(id="submitH" onclick="sendCity('textH', 'Highschool', 'submitH')") Submit
 
             //- College
             .w3-button.w3-panel.w3-block.contains.w3-left-align.w3-hover-gray.w3-leftbar.w3-border-dark-gray.league.w3-round-large(onclick="openL('college')")
                 h3 College
             .w3-hide.w3-panel.w3-gray.w3-leftbar.w3-border-green.w3-round-large(id="college", style="margin-left:16px")
                 h3 City
-                input.w3-block.searchbar(type="text", placeholder="Enter a city")
-                a.w3-button.w3-right.w3-panel.w3-light-gray.w3-round-large(href="highschools" id="submitH" onclick="") Submit
+                input.w3-block.searchbar(type="text", placeholder="Enter a city", id="textC")
+                button.w3-button.w3-right.w3-panel.w3-light-gray.w3-round-large(id="submitC" onclick="sendCity('textC', 'College', 'submitC')") Submit
 
             //- Semipro
             .w3-button.w3-panel.w3-block.contains.w3-left-align.w3-hover-gray.w3-leftbar.w3-border-dark-gray.league.w3-round-large(onclick="openL('semipro')")
                 h3 Semi-Pro
             .w3-hide.w3-panel.w3-gray.w3-leftbar.w3-border-green.w3-round-large(id="semipro", style="margin-left:16px")
                 h3 City
-                input.w3-block.w3-searchbar(type="text", placeholder="Enter a city")
-                a.w3-button.w3-right.w3-panel.w3-light-gray.w3-round-large(href="highschools" id="submitH" onclick="") Submit
+                input.w3-block.searchbar(type="text", placeholder="Enter a city", id="textS")
+                button.w3-button.w3-right.w3-panel.w3-light-gray.w3-round-large(id="submitS" onclick="sendCity('textS', 'Semi-pro', 'submitS')") Submit
             
             //- Minors
             .w3-button.w3-panel.w3-block.contains.w3-left-align.w3-hover-gray.w3-leftbar.w3-border-dark-gray.league.w3-round-large(onclick="openL('minors')")
                 h3 Minors
             .w3-hide.w3-panel.w3-gray.w3-leftbar.w3-border-green.w3-round-large(id="minors", style="margin-left:16px")
                 h3 City
-                input.w3-block.searchbar(type="text" placeholder="Enter a city")
-                a.w3-button.w3-right.w3-panel.w3-light-gray.w3-round-large(href="highschools" id="submitH" onclick="") Submit
+                input.w3-block.searchbar(type="text", placeholder="Enter a city", id="textM")
+                button.w3-button.w3-right.w3-panel.w3-light-gray.w3-round-large(id="submitM" onclick="sendCity('textM', 'Minors', 'submitM')") Submit
     .w3-col.m3 &nbsp;
 
     script.
@@ -63,6 +63,13 @@ block content
             }
         }
 
-        function sendCity(cityText) {
-            
+        function sendCity(cityText, leagueType, buttonId) {
+
+            var cityName = document.getElementById(cityText).value;
+
+            if (cityName.length != 0) {
+                localStorage.setItem('cityName', cityName);
+                localStorage.setItem('league', leagueType);
+                window.document.location =  'leagues';
+            }
         }
