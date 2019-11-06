@@ -42,9 +42,9 @@ app.get('/home', (req, res) => {
     });
 });
 
-app.get('/highschools', (req, res) => {
+app.get('/leagues', (req, res) => {
 
-    res.render('highschools', {
+    res.render('leagues', {
 
     });
 });
