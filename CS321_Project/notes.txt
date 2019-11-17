@@ -17,7 +17,7 @@ client------request------>server<------->database engine
       <-----response------server
 
 request- req
-response- response
+response- res
 
 Pug- Template engine  
 CSS- cascading style sheets
@@ -27,13 +27,13 @@ npm- node package manager
 
 jQuery- javascript library
 
-npm init -y     //creates package.json file. do this after creating app.json
-npm i express   //creates node modules folder from express
-npm i path      //installs path
-npm i morgan    // logs requests, middleware
-npm i pug       // installs pug Template
+npm init -y      // creates package.json file. do this after creating app.json
+npm i express    // creates node modules folder from express
+npm i path       // installs path
+npm i morgan     // logs requests, middleware
+npm i pug        // installs pug Template
 npm i nodemon -g // node monitoring
-npm i           // installs all dependencies from packages file
+npm i            // installs all dependencies from packages file
 
 
 if sharing this hello world app, delete the node_modules folder and the recipient can simply use the "npm i" command to attain those contents
@@ -108,3 +108,16 @@ margin- external
 
 
 API key: AIzaSyBV5rHOd4fKM_XXCcbplwmHJ2ObQQ7kIyo
+
+
+git
+-----------------------------
+$ git checkout -b featureName develop           // to checkout a new branch from develop
+$ git commit -am "Descriptive commit message"   // to commit changes to branch created
+
+$ git checkout dev
+$ git merge --no-ff featureName                 // to merge created branch back into develop, make sure to checkout dev first like above line
+
+$ git push origin dev
+$ git push origin myFeature                     // to push these changes to the server
+
