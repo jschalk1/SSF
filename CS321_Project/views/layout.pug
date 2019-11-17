@@ -7,6 +7,7 @@ meta(name="viewport" content="width=device-width, initial-scale=1")
 link(rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css")
 link(rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css")
 link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+//- should add these styles to an external style sheet, but its minimal enough to be unobtrusive for now
 style.
     h1, h2, h3, h4, h5, h6 { font-family: sans-serif; }
     .background{color:#fff !important; background-color:#292929 !important}
@@ -16,18 +17,24 @@ style.
     .default{color:#fff !important; background-color:#4a4f4e !important}
     .contains{color:#fff !important; background-color:#767676 !important}
     .smallMarg{margin-top:2px; margin-bottom:2px;}
+    button:focus {outline:0 !important;}
 body.background
+    //- navbar at the top of the page
     .w3-bar.navbar
-        a.w3-bar-item(href="home", style="text-decoration:none") 
-            h3(style="margin-bottom:-1px; margin-top:3px", id="domain") Sports Schedule Finder
-        button.w3-bar-item.w3-button.w3-theme-1.w3-xlarge.w3-padding-large.w3-right
+        a.w3-bar-item.w3-button.w3-theme-1.w3-xlarge.w3-padding-large(href='/' style='margin-right:-10px')
+            i.fa.fa-home
+        a.w3-bar-item(id='domain' href='/' style="text-decoration:none") 
+            h5(style='margin-top:10px; margin-bottom:-5px' ) Schedule Finder
+        button.w3-bar-item.w3-button.w3-theme-1.w3-xlarge.w3-padding-large.w3-right(style="margin-left:-10px")
             i.fa.fa-search
         .w3-bar-item.w3-right(id="searchbar", style="width:35%")
             input.w3-input.w3-round-xlarge.w3-border.searchbar(type="text", id="location", placeholder="Search")
 
+    //- block content is the start point for every pug file that extends this pug file. Essentially, every page that extends this file will always have the navbar and can freely add other features
     block content
 
     script.
+        //- For using the google places API searchbar autocomplete feature
         function activatePlacesSearch() {
             
             var searchbars = document.getElementsByClassName('searchbar');
@@ -39,16 +46,42 @@ body.background
         }
 
         //- Dynamically adjust the size of navbar elements when screen size changes
-        window.addEventListener("resize", myFunction);
-        function myFunction() {
+        let resize = () => {
+
             if (window.innerWidth < 675) {
                 document.getElementById("searchbar").style.width = "60%";
                 document.getElementById("domain").style.display = "none";
             } 
             else {
-                document.getElementById("searchbar").style.width = "35%";
+                document.getElementById("searchbar").style.width = "40%";
                 document.getElementById("domain").style.display = "block";
             }
         }
 
+        //- Use the resize method we defined above when the page is intially loaded and when the page is resized
+        window.addEventListener("resize", resize);
+        window.addEventListener('DOMContentLoaded', resize);
+
+
+        //- function responsible for showing accordion dropdown when a button with dropdown content is clicked
+        function openL(id) {
+
+            var x = document.getElementById(id);
+
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+                x.previousElementSibling.className = 
+                x.previousElementSibling.className.replace("w3-border-dark-gray", "w3-border-green");
+                x.previousElementSibling.className = 
+                x.previousElementSibling.className.replace("contains", "w3-gray");
+            } else { 
+                x.className = x.className.replace(" w3-show", "");
+                x.previousElementSibling.className = 
+                x.previousElementSibling.className.replace("w3-border-green", "w3-border-dark-gray");
+                x.previousElementSibling.className = 
+                x.previousElementSibling.className.replace("w3-gray", "contains");
+            }
+        }
+
+    //- script that links google API to API key
     script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV5rHOd4fKM_XXCcbplwmHJ2ObQQ7kIyo&libraries=places&callback=activatePlacesSearch").

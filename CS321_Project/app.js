@@ -1,58 +1,43 @@
-/* require 3 modules to start:
-express, morgan, and path */
-
+// Express is for the management of general client-server interation. Manages routing, connections, data sending/receiving
 const express = require('express');
+// path lets us manipulate the file system to manage paths more easily
 const path = require('path');
-const logger = require('morgan');
+// body-parser is necesarry to interpret the body of the user's request appropriately
+const bodyParser = require('body-parser');
 
+// When we require files we created ourself, the variable we assign the require to takes the value of what the export was assigned in the exporting file.
 
-//create express application object
+// db = new Database()
+const db = require('./backend/database/database');
+// router = the router we used in the routes folder of the backend
+const router = require('./backend/routes/schoolRoutes');
+
+// create express app
 const app = express();
 
-/* app.set() methods to set up mobile first preferences and make 
-    our current directory the default */
+// views is an express keyword for markup files. We are settinng the views location to the views folder of our project. Our views will take the form of pug files.
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-/* app.use() methods to add middleware functionality like our morgan
-    logger */
-app.use(logger('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
+// for interpreting request bodies as json
+app.use(express.json());
+// for appropriate client body request parsing
+app.use(bodyParser.urlencoded({ extended: false }));
 
-/* app.get() method(s) to add routes to our site. create vars to keep
-    variables local and not static */
+// use the router from the routes file in the backend
+// This should be the last app.use() we call so that all the above app.use() calls are applied to the router
+app.use(router);
 
-/* the first paramter is the route needed to access this page, leaving it empty 
-    simply requires localhost:3000 */
-app.get('', (req, res) => {
-
-    /* choose which .pug folder you want to use from as the parameter of res.render,
-        then set the variables that are in the .pug file you chose */
-    res.render('home', {
-        
-    });
+// render default home page
+router.route('').get((req, res) => {
+    res.render('home');
 });
 
-/* because we are using '/home' as our paramter, our webpage for this route will
-only be visible at localhost:3000/home */
-app.get('/home', (req, res) => {
+// connect to db
+db.connect();
+// drop collections if they exist and repopulate with dummy data
+db.setup();
 
-    res.render('home', {
-
-    });
-});
-
-app.get('/leagues', (req, res) => {
-
-    res.render('leagues', {
-
-    });
-});
-
-
-
-
+// listen on port 3000
 const port = 3000;
-
-// the character in console.log() is the upper left back tick, not an apostrophe
 app.listen(port, () => console.log(`Listening on port: ${port}`));

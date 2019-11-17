@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    .w3-col.m3 &nbsp;
+    .w3-col.m6
+
+        .w3-panel.sidebar.w3-round-xlarge
+            .w3-block.w3-panel.contains.w3-leftbar.w3-rightbar.w3-border-dark-gray.w3-round-large
+                h2.w3-center #{sport}: #{school}
+
+        .w3-panel.sidebar.w3-round-xlarge
+            //- for every team in the array of teams, show the team
+            each team in teams
+                //- when the client clicks a specific team send them to the route /schedule/:sport/:team/:school. We defined this route in the routes folder
+                a.w3-button.w3-panel.w3-block.contains.w3-left-align.w3-hover-gray.w3-leftbar.w3-border-dark-gray.w3-round-large(href='/schedule/' + sport + '/' + team.team + '/' + school)
+                    h4= team.team
+    .w3-col.m3 &nbsp;
