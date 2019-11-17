@@ -112,6 +112,7 @@ API key: AIzaSyBV5rHOd4fKM_XXCcbplwmHJ2ObQQ7kIyo
 
 git
 -----------------------------
+$git add .                                      // adds unstaged changes so that they will be committed
 $ git checkout -b featureName develop           // to checkout a new branch from develop
 $ git commit -am "Descriptive commit message"   // to commit changes to branch created
 

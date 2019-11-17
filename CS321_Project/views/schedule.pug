@@ -1,0 +1,34 @@
+extends layout
+
+block content
+    .w3-col.m3 &nbsp;
+    .w3-col.m6
+
+        //- page title
+        .w3-panel.sidebar.w3-round-xlarge
+            .w3-block.w3-panel.contains.w3-leftbar.w3-rightbar.w3-border-dark-gray.w3-round-large
+                h2.w3-center Schedule: #{team}
+
+        //- page content
+        .w3-panel.sidebar.w3-round-xlarge
+            .w3-block.w3-panel.contains.w3-leftbar.w3-rightbar.w3-border-dark-gray.w3-round-large
+                //- table that contains the schedule
+                table.w3-table.w3-bordered.w3-panel
+                    //- define first row of table with constant column values to indicate what each subsequent row means
+                    tr
+                        th Date
+                        th Time
+                        th Opponent
+                        th.w3-right Location
+                    //- create a table row for every game in a teams schedule
+                    each game in schedule.schedule
+                        tr
+                            //- game date. the months[] array below is defined in the routes file when schedule.pug is rendered
+                            td= months[game.date.getMonth()] + ' ' + game.date.getDate()
+                            //- game time. the convertHours() function below is defined in the routes file when schedule.pug is rendered
+                            td= convertHours(game.date.getHours()) + ':' + game.date.getMinutes()
+                            //- game opponent
+                            td= game.opponent
+                            //- game location
+                            td.w3-right= game.homeaway
+    .w3-col.m3 &nbsp;

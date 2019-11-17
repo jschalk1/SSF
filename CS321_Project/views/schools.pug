@@ -1,0 +1,38 @@
+extends layout
+
+block content
+
+    style.
+        .sport {color:#000 !important; background-color:#8f8f8f !important}
+
+    .w3-col.m3 &nbsp;
+    .w3-col.m6
+        //- page title
+        .w3-panel.sidebar.w3-round-xlarge
+            .w3-block.w3-panel.contains.w3-leftbar.w3-rightbar.w3-border-dark-gray.w3-round-large
+                h2.w3-center= city
+        //- page content
+        .w3-panel.sidebar.w3-round-xlarge
+            //- for every individual school in the schools array, display the school as an h3 element in its own panel
+            each school in schools
+                .w3-button.w3-panel.w3-block.contains.w3-left-align.w3-hover-gray.w3-leftbar.w3-border-dark-gray.w3-round-large(onclick="openL('" + school._id + "')")
+                    h4= school.school
+                .w3-hide.w3-panel.w3-gray.w3-leftbar.w3-border-green.w3-round-large(id= school._id, style="margin-left:16px")
+                    h4 Sports
+                    //- for each sport at a given school, display that sport in the accordion dropdown
+                    each sport in school.sports
+                        //- if the sport is clicked go to the route /teams/:sport/:school, we defined this route as an HTTP GET in our routes file
+                        a.w3-button.w3-panel.w3-block.w3-border.w3-border-dark-gray.w3-left-align.sport.w3-round(href='/teams/' + sport + '/' + school.school, style="text-decoration:none") 
+                            h4= sport
+
+
+                        //- the approach below works to send data for one universal '/teams' post route by letting us send sport, school, city, and state as a part of the form body in a hidden form input where we set the value. This technique is flawed because users cant bookmark the '/teams' and visit it directly as this doesnt tell the server the correct info
+ 
+                        //- form(action='/teams' method='post')
+                        //-     input.w3-hide(name="sport" value= sport + '@' + school.school + '@' + school.city + '@' + school.state)
+                        //-     input.w3-button.w3-panel.w3-block.w3-border.w3-border-dark-gray.w3-left-align.sport.w3-round(type='submit' value=sport)
+                            
+    .w3-col.m3 &nbsp;
+
+
+    
